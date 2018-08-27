@@ -1,3 +1,5 @@
+require 'benchmark'
+
 class Stack 
   def initialize
     @store = Array.new      
@@ -26,9 +28,17 @@ class Extras < Stack
   end 
 end 
 
-s = Extras.new
+store = Extras.new
 10000000.times do 
-  s.push(Random.rand(1..100))
+  store.push(Random.rand(1..100))
 end 
-puts s.max
-puts s.mean
+
+time1 = Benchmark.measure {
+  puts "Max: "+store.max.to_s
+}
+puts "Max Time "+time1.real.to_s
+
+time2 = Benchmark.measure {
+  puts "Mean: "+store.mean.to_s
+}
+puts "Mean Time "+time2.real.to_s
