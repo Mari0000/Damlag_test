@@ -10,6 +10,7 @@ class Stack
   end
 
   def pop
+    return "Error: no data found" if @store.empty?
     @store.pop
   end 
   
@@ -18,15 +19,20 @@ class Stack
   end 
 
   def max
+    return puts "Error: no data found" if @store.empty?
     @store.max
   end 
 end 
 
 class Extras < Stack
   def mean 
+    return puts "Error: no data found" if @store.empty?
     @store.inject{ |sum, el| sum + el }.to_f / @store.size
   end 
 end 
+
+store1 = Extras.new 
+puts store1.pop 
 
 store = Extras.new
 10000000.times do 
